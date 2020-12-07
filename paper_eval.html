@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8"/>
+
+<head>
+<link rel="stylesheet" href="paper_eval.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+  <div class="top_page">
+    <h1>紙の折り方によって与えられるユーザーエクスペリエンスを調べるための実験</h1>
+    <button id="authorize_button" onclick="handleAuthClick()">ログイン</button>
+    <div class="id_input">
+    <form>
+      <label for="ss_id">IDを入力してください：</label><br>
+      <input type="text" id="ss_id" name="ss_id" value=""><br>
+    </form>
+    <button onclick="check_id()">次へ</button>
+    </div>
+  </div>
+
+
+  <div id="all_eval" class="all_eval">
+    <h2>タスク１：Attrakdiffによる折り方の評価</h2>
+    <div class="all_eval_top">
+    <span class="envelope_number">1</span>
+    <p class="attention">
+      紙の折り方について評価すること
+      20段階評価で評価すること
+      評価が-10でも、必ず1回ボタンをクリックして、数値が右側に表示されるように動かすこと
+    </p>
+  </div>
+    <form id="eval" class="eval">
+      <div class="col">
+        <div class="question">
+            <label for="attr1">機械的</label><label for="attr1">人間的</label>
+            <output  id="attr1_disp" class="num_output"></output><br>
+            <input type="range" id="attr1" name="attr1" min="-10" max="10" value="-10" class="slider" oninput="attr1_disp.value = attr1.value">
+        </div>
+        <div class="question">
+            <label for="attr2">複雑な</label><label for="attr2">シンプルな</label>
+            <output  id="attr2_disp" class="num_output"></output><br>
+            <input type="range" id="attr2" name="attr2" min="-10" max="10" value="-10" class="slider" oninput="attr2_disp.value = attr2.value">
+        </div>
+        <div class="question">
+            <label for="attr3">非実用的な</label><label for="attr3">実用的な</label>
+            <output  id="attr3_disp" class="num_output"></output><br>
+            <input type="range" id="attr3" name="attr3" min="-10" max="10" value="-10" class="slider" oninput="attr3_disp.value = attr3.value">
+          </div>
+          <div class="question">
+            <label for="attr4">やっかいな</label><label for="attr4">簡単な</label>
+            <output  id="attr4_disp" class="num_output"></output><br>
+            <input type="range" id="attr4" name="attr4" min="-10" max="10" value="-10" class="slider" oninput="attr4_disp.value = attr4.value">
+          </div>
+          <div class="question">
+            <label for="attr5">予測しづらい</label><label for="attr5">予測しやすい</label>
+            <output  id="attr5_disp" class="num_output"></output><br>
+            <input type="range" id="attr5" name="attr5" min="-10" max="10" value="-10" class="slider" oninput="attr5_disp.value = attr5.value">
+          </div>
+          <div class="question">
+            <label for="attr6">ややこしい</label><label for="attr6">明解な</label>
+            <output  id="attr6_disp" class="num_output"></output><br>
+            <input type="range" id="attr6" name="attr6" min="-10" max="10" value="-10" class="slider" oninput="attr6_disp.value = attr6.value">
+          </div>
+          <div class="question">
+            <label for="attr7">扱いにくい</label><label for="attr7">扱いやすい</label>
+            <output  id="attr7_disp" class="num_output"></output><br>
+            <input type="range" id="attr7" name="attr7" min="-10" max="10" value="-10" class="slider" oninput="attr7_disp.value = attr7.value">
+          </div>
+        </div>
+        <div class="col">
+          <div class="question">
+            <label for="attr8">繋がりがない</label><label for="attr8">繋がりがある</label>
+            <output  id="attr8_disp" class="num_output"></output><br>
+            <input type="range" id="attr8" name="attr8" min="-10" max="10" value="-10" class="slider" oninput="attr8_disp.value = attr8.value">
+          </div>
+          <div class="question">
+            <label for="attr9">素人的な</label><label for="attr9">プロ的な</label>
+            <output  id="attr9_disp" class="num_output"></output><br>
+            <input type="range" id="attr9" name="attr9" min="-10" max="10" value="-10" class="slider" oninput="attr9_disp.value = attr9.value">
+          </div>
+          <div class="question">
+            <label for="attr10">ださい</label><label for="attr10">スタイリッシュな</label>
+            <output  id="attr10_disp" class="num_output"></output><br>
+            <input type="range" id="attr10" name="attr10" min="-10" max="10" value="-10" class="slider" oninput="attr10_disp.value = attr10.value">
+          </div>
+          <div class="question">
+            <label for="attr11">チープな</label><label for="attr11">プレミアムな</label>
+            <output  id="attr11_disp" class="num_output"></output><br>
+            <input type="range" id="attr11" name="attr11" min="-10" max="10" value="-10" class="slider" oninput="attr11_disp.value = attr11.value">
+          </div>
+          <div class="question">
+            <label for="attr12">統一感がない</label><label for="attr12">統一感がある</label>
+            <output  id="attr12_disp" class="num_output"></output><br>
+            <input type="range" id="attr12" name="attr12" min="-10" max="10" value="-10" class="slider" oninput="attr12_disp.value = attr12.value">
+          </div>
+          <div class="question">
+            <label for="attr13">親しみにくい</label><label for="attr13">親しみやすい</label>
+            <output  id="attr13_disp" class="num_output"></output><br>
+            <input type="range" id="attr13" name="attr13" min="-10" max="10" value="-10" class="slider" oninput="attr13_disp.value = attr13.value">
+        </div>
+        <div class="question">
+            <label for="attr14">見た目が悪い</label><label for="attr14">見た目がいい</label>
+            <output  id="attr14_disp" class="num_output"></output><br>
+            <input type="range" id="attr14" name="attr14" min="-10" max="10" value="-10" class="slider" oninput="attr14_disp.value = attr14.value">
+          </div>
+        </div>
+        <div class="col">
+          <div class="question">
+            <label for="attr15">定型的な</label><label for="attr15">独創的な</label>
+            <output  id="attr15_disp" class="num_output"></output><br>
+            <input type="range" id="attr15" name="attr15" min="-10" max="10" value="-10" class="slider" oninput="attr15_disp.value = attr15.value">
+          </div>
+          <div class="question">
+            <label for="attr16">つまらない</label><label for="attr16">創造的な</label>
+            <output  id="attr16_disp" class="num_output"></output><br>
+            <input type="range" id="attr16" name="attr16" min="-10" max="10" value="-10" class="slider" oninput="attr16_disp.value = attr16.value">
+          </div>
+          <div class="question">
+            <label for="attr17">慎重な</label><label for="attr17">大胆な</label>
+            <output  id="attr17_disp" class="num_output"></output><br>
+            <input type="range" id="attr17" name="attr17" min="-10" max="10" value="-10" class="slider" oninput="attr17_disp.value = attr17.value">
+          </div>
+          <div class="question">
+            <label for="attr18">保守的な</label><label for="attr18">革新的な</label>
+            <output  id="attr18_disp" class="num_output"></output><br>
+            <input type="range" id="attr18" name="attr18" min="-10" max="10" value="-10" class="slider" oninput="attr18_disp.value = attr18.value">
+          </div>
+          <div class="question">
+            <label for="attr19">退屈な</label><label for="attr19">魅惑的な</label>
+            <output  id="attr19_disp" class="num_output"></output><br>
+            <input type="range" id="attr19" name="attr19" min="-10" max="10" value="-10" class="slider" oninput="attr19_disp.value = attr19.value">
+          </div>
+          <div class="question">
+            <label for="attr20">やりがいがない</label><label for="attr20">やりがいのある</label>
+            <output  id="attr20_disp" class="num_output"></output><br>
+            <input type="range" id="attr20" name="attr20" min="-10" max="10" value="-10" class="slider" oninput="attr20_disp.value = attr20.value">
+          </div>
+          <div class="question">
+            <label for="attr21">平凡な</label><label for="attr21">奇抜な</label>
+            <output  id="attr21_disp" class="num_output"></output><br>
+            <input type="range" id="attr21" name="attr21" min="-10" max="10" value="-10" class="slider" oninput="attr21_disp.value = attr21.value">
+          </div>
+        </div>
+        <div class="col">
+          <div class="question">
+            <label for="attr22">感じが悪い</label><label for="attr22">感じがいい</label>
+            <output  id="attr22_disp" class="num_output"></output><br>
+            <input type="range" id="attr22" name="attr22" min="-10" max="10" value="-10" class="slider" oninput="attr22_disp.value = attr22.value">
+          </div>
+          <div class="question">
+            <label for="attr23">不快な</label><label for="attr23">魅力的な</label>
+            <output  id="attr23_disp" class="num_output"></output><br>
+            <input type="range" id="attr23" name="attr23" min="-10" max="10" value="-10" class="slider" oninput="attr23_disp.value = attr23.value">
+          </div>
+          <div class="question">
+            <label for="attr24">嫌い</label><label for="attr24">好き</label>
+            <output  id="attr24_disp" class="num_output"></output><br>
+            <input type="range" id="attr24" name="attr24" min="-10" max="10" value="-10" class="slider" oninput="attr24_disp.value = attr24.value">
+          </div>
+          <div class="question">
+            <label for="attr25">拒否したい</label><label for="attr25">受け入れたい</label>
+            <output  id="attr25_disp" class="num_output"></output><br>
+            <input type="range" id="attr25" name="attr25" min="-10" max="10" value="-10" class="slider" oninput="attr25_disp.value = attr25.value">
+          </div>
+          <div class="question">
+            <label for="attr26">悪い</label><label for="attr26">良い</label>
+            <output  id="attr26_disp" class="num_output"></output><br>
+            <input type="range" id="attr26" name="attr26" min="-10" max="10" value="-10" class="slider" oninput="attr26_disp.value = attr26.value">
+          </div>
+          <div class="question">
+            <label for="attr27">避けたくなる</label><label for="attr27">興味をそそられる</label>
+            <output  id="attr27_disp" class="num_output"></output><br>
+            <input type="range" id="attr27" name="attr27" min="-10" max="10" value="-10" class="slider" oninput="attr27_disp.value = attr27.value">
+          </div>
+          <div class="question">
+            <label for="attr28">萎える</label><label for="attr28">やる気の出る</label>
+            <output  id="attr28_disp" class="num_output"></output><br>
+            <input type="range" id="attr28" name="attr28" min="-10" max="10" value="-10" class="slider" oninput="attr28_disp.value = attr28.value">
+        </div>
+      </div>
+
+  </form>
+
+    <div class="buttons">
+    <button id="next" type="submit" onclick="check()" class="next submit_button">次へ</button>
+    <br>
+    <button id="save" type="submit" onclick="check2()"class="save submit_button">休憩</button>
+    </div>
+  </div>
+
+  <div class="last_eval">
+    <h2>タスク２：気に入った色</h2>
+    <p>気に入った色とその理由を５つ入力してください</p><br>
+    <form>
+    <div class="colors">
+    <div class="fav_color">
+      <h3>色</h3>
+      <label for="color1">色名</label>
+      <input type="text" id="color1" name="color1"><br>
+      <label for="color1r">理由</label>
+      <textarea id="color1r" name="color1r" rows="3" cols="30"></textarea>
+      <br>
+    </div>
+
+    <div class="fav_color">
+      <h3>色</h3>
+      <label for="color2">色名</label>
+      <input type="text" id="color2" name="color2"><br>
+      <label for="color2r">理由</label>
+      <textarea id="color2r" name="color2r" rows="3" cols="30"></textarea>
+      <br>
+    </div>
+
+    <div class="fav_color">
+      <h3>色</h3>
+      <label for="color3">色名</label>
+      <input type="text" id="color3" name="color3"><br>
+      <label for="color3r">理由</label>
+      <textarea id="color3r" name="color3r" rows="3" cols="30"></textarea>
+      <br>
+    </div>
+
+    <div class="fav_color">
+      <h3>色</h3>
+      <label for="color4">色名</label>
+      <input type="text" id="color4" name="color4"><br>
+      <label for="color4r">理由</label>
+      <textarea id="color4r" name="color4r" rows="3" cols="30"></textarea>
+      <br>
+    </div>
+
+    <div class="fav_color">
+      <h3>色</h3>
+      <label for="color5">色名</label>
+      <input type="text" id="color5" name="color5"><br>
+      <label for="color5r">理由</label>
+      <textarea id="color5r" name="color5r" rows="3" cols="30"></textarea>
+      <br>
+    </div>
+  </div>
+  <button type="submit">提出</button>
+</form>
+</div>
+
+<p id="thank"></p>
+
+<div style="display:none">
+    <p id="data"></p>
+    <p id="finished_num"></p>
+    <p id="cm_order"></p>
+</div>
+
+  <script>
+
+  </script>
+
+  <script async defer src="https://apis.google.com/js/api.js" onload="this.onload=function(){};handleClientLoad()"
+      onreadystatechange="if (this.readyState === 'complete') this.onload()"></script>
+
+</body>
+</html>
