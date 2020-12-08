@@ -65,7 +65,7 @@ function start() {
     alert("パンフレットの内容ではなく折り方によって得られるUXを直観的に入力してください")
     envelope_number.innerHTML = i;
     top_page.style.display ='none';
-    cont.style.display="block";
+    rest.style.display="none";
     alert("実験始まります");
     openFullscreen();
     setTimeout(function(){
