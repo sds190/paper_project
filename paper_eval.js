@@ -26,7 +26,7 @@ const rest = document.getElementById("rest");
 const cont = document.getElementById("continue");
 const last_eval = document.getElementById("last_eval");
 const thank = document.getElementById("thank");
-var i = 30;
+var i = 28;
 
   function check_id(){
     var ss_id = document.getElementById("ss_id").value;
