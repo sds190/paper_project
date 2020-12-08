@@ -5,13 +5,18 @@
 <head>
 <link rel="stylesheet" href="paper_eval.css">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 </head>
 
+
 <body>
-  <div class="top_page">
-    <h1>紙の折り方によって与えられるユーザーエクスペリエンスを調べるための実験</h1>
-    <button id="authorize_button" onclick="handleAuthClick()">ログイン</button>
-    <div class="id_input">
+  <div id="header" class="header">
+    <button id="authorize_button" class="authorize_button" onclick="handleAuthClick()">ログイン</button>
+  </div>
+
+  <div id="top_page" class="top_page">
+    <h1 class="title">紙の折り方によって与えられるユーザーエクスペリエンスを調べるための実験</h1>
+    <div class="id_input" id="id_input">
     <form>
       <label for="ss_id">IDを入力してください：</label><br>
       <input type="text" id="ss_id" name="ss_id" value=""><br>
@@ -20,15 +25,47 @@
     </div>
   </div>
 
+  <div id="guide" class="guide">
+    <h2>実験手順</h2>
+    <div class="boxes">
+    <div class="box">
+      <img class="pic">
+      <h3>ステップ１</h3>
+      <p>右側から<b>封筒を裏向きのまま</b>パンフレットを取り出していただきます。</p>
+    </div>
+    <div class="box">
+      <img class="pic step2">
+      <h3>ステップ２</h3>
+      <p><span class="online_guide">カメラで顔が見える状態で</span>一回パンフレットを開封していただきます。</p>
+    </div>
+    <div class="box">
+      <img class="pic step3">
+      <h3>ステップ３</h3>
+      <p>パンフレットの折り方を評価していただきます。<br>
+      <b>封筒番号と評価画面の数字が一致することを確認してください。</b></br>
+      評価が終わったら、次のパンフレットを評価する場合、「次へ」のボタンを押してください。<br>
+      休憩を取る場合は「休憩」のボタンを押してください。</p>
+    </div>
+    <div class="box">
+      <img class="pic">
+      <h3>ステップ４</h3>
+      <p>パンフレットをしまい、左側に置いていただきます。</p>
+    </div>
+  </div>
+  <p>30枚のパンフレット評価を行うまで以上のステップを繰り返していただきます。</p>
+  <button onclick="start()">次へ</button>
+</div>
+
 
   <div id="all_eval" class="all_eval">
     <h2>タスク１：Attrakdiffによる折り方の評価</h2>
     <div class="all_eval_top">
-    <span class="envelope_number">1</span>
+    <span class="envelope_number" id="envelope_number"></span>
     <p class="attention">
-      紙の折り方について評価すること
-      20段階評価で評価すること
-      評価が-10でも、必ず1回ボタンをクリックして、数値が右側に表示されるように動かすこと
+      <b>封筒番号と評価画面の数字が一致することを確認してください。</b><br>
+      パンフレットの内容ではなく、折り方を評価してください。<br>
+      21段階評価で評価してください。<br>
+      評価が-10でも、必ず1回ボタンをクリックして、数値が右側に表示されるように動かしてください。
     </p>
   </div>
     <form id="eval" class="eval">
@@ -39,17 +76,17 @@
             <input type="range" id="attr1" name="attr1" min="-10" max="10" value="-10" class="slider" oninput="attr1_disp.value = attr1.value">
         </div>
         <div class="question">
-            <label for="attr2">複雑な</label><label for="attr2">シンプルな</label>
+            <label for="attr2">　　複雑な</label><label for="attr2">シンプルな</label>
             <output  id="attr2_disp" class="num_output"></output><br>
             <input type="range" id="attr2" name="attr2" min="-10" max="10" value="-10" class="slider" oninput="attr2_disp.value = attr2.value">
         </div>
         <div class="question">
-            <label for="attr3">非実用的な</label><label for="attr3">実用的な</label>
+            <label for="attr3">非実用的な</label><label for="attr3">実用的な　</label>
             <output  id="attr3_disp" class="num_output"></output><br>
             <input type="range" id="attr3" name="attr3" min="-10" max="10" value="-10" class="slider" oninput="attr3_disp.value = attr3.value">
           </div>
           <div class="question">
-            <label for="attr4">やっかいな</label><label for="attr4">簡単な</label>
+            <label for="attr4">やっかいな</label><label for="attr4">簡単な　　</label>
             <output  id="attr4_disp" class="num_output"></output><br>
             <input type="range" id="attr4" name="attr4" min="-10" max="10" value="-10" class="slider" oninput="attr4_disp.value = attr4.value">
           </div>
@@ -59,7 +96,7 @@
             <input type="range" id="attr5" name="attr5" min="-10" max="10" value="-10" class="slider" oninput="attr5_disp.value = attr5.value">
           </div>
           <div class="question">
-            <label for="attr6">ややこしい</label><label for="attr6">明解な</label>
+            <label for="attr6">ややこしい</label><label for="attr6">明解な　　</label>
             <output  id="attr6_disp" class="num_output"></output><br>
             <input type="range" id="attr6" name="attr6" min="-10" max="10" value="-10" class="slider" oninput="attr6_disp.value = attr6.value">
           </div>
@@ -81,12 +118,12 @@
             <input type="range" id="attr9" name="attr9" min="-10" max="10" value="-10" class="slider" oninput="attr9_disp.value = attr9.value">
           </div>
           <div class="question">
-            <label for="attr10">ださい</label><label for="attr10">スタイリッシュな</label>
+            <label for="attr10">　　　　　ださい</label><label for="attr10">スタイリッシュな</label>
             <output  id="attr10_disp" class="num_output"></output><br>
             <input type="range" id="attr10" name="attr10" min="-10" max="10" value="-10" class="slider" oninput="attr10_disp.value = attr10.value">
           </div>
           <div class="question">
-            <label for="attr11">チープな</label><label for="attr11">プレミアムな</label>
+            <label for="attr11">　　チープな</label><label for="attr11">プレミアムな</label>
             <output  id="attr11_disp" class="num_output"></output><br>
             <input type="range" id="attr11" name="attr11" min="-10" max="10" value="-10" class="slider" oninput="attr11_disp.value = attr11.value">
           </div>
@@ -113,7 +150,7 @@
             <input type="range" id="attr15" name="attr15" min="-10" max="10" value="-10" class="slider" oninput="attr15_disp.value = attr15.value">
           </div>
           <div class="question">
-            <label for="attr16">つまらない</label><label for="attr16">創造的な</label>
+            <label for="attr16">つまらない</label><label for="attr16">創造的な　</label>
             <output  id="attr16_disp" class="num_output"></output><br>
             <input type="range" id="attr16" name="attr16" min="-10" max="10" value="-10" class="slider" oninput="attr16_disp.value = attr16.value">
           </div>
@@ -128,7 +165,7 @@
             <input type="range" id="attr18" name="attr18" min="-10" max="10" value="-10" class="slider" oninput="attr18_disp.value = attr18.value">
           </div>
           <div class="question">
-            <label for="attr19">退屈な</label><label for="attr19">魅惑的な</label>
+            <label for="attr19">　退屈な</label><label for="attr19">魅惑的な</label>
             <output  id="attr19_disp" class="num_output"></output><br>
             <input type="range" id="attr19" name="attr19" min="-10" max="10" value="-10" class="slider" oninput="attr19_disp.value = attr19.value">
           </div>
@@ -150,7 +187,7 @@
             <input type="range" id="attr22" name="attr22" min="-10" max="10" value="-10" class="slider" oninput="attr22_disp.value = attr22.value">
           </div>
           <div class="question">
-            <label for="attr23">不快な</label><label for="attr23">魅力的な</label>
+            <label for="attr23">　不快な</label><label for="attr23">魅力的な</label>
             <output  id="attr23_disp" class="num_output"></output><br>
             <input type="range" id="attr23" name="attr23" min="-10" max="10" value="-10" class="slider" oninput="attr23_disp.value = attr23.value">
           </div>
@@ -160,7 +197,7 @@
             <input type="range" id="attr24" name="attr24" min="-10" max="10" value="-10" class="slider" oninput="attr24_disp.value = attr24.value">
           </div>
           <div class="question">
-            <label for="attr25">拒否したい</label><label for="attr25">受け入れたい</label>
+            <label for="attr25">　拒否したい</label><label for="attr25">受け入れたい</label>
             <output  id="attr25_disp" class="num_output"></output><br>
             <input type="range" id="attr25" name="attr25" min="-10" max="10" value="-10" class="slider" oninput="attr25_disp.value = attr25.value">
           </div>
@@ -170,12 +207,12 @@
             <input type="range" id="attr26" name="attr26" min="-10" max="10" value="-10" class="slider" oninput="attr26_disp.value = attr26.value">
           </div>
           <div class="question">
-            <label for="attr27">避けたくなる</label><label for="attr27">興味をそそられる</label>
+            <label for="attr27">　　避けたくなる</label><label for="attr27">興味をそそられる</label>
             <output  id="attr27_disp" class="num_output"></output><br>
             <input type="range" id="attr27" name="attr27" min="-10" max="10" value="-10" class="slider" oninput="attr27_disp.value = attr27.value">
           </div>
           <div class="question">
-            <label for="attr28">萎える</label><label for="attr28">やる気の出る</label>
+            <label for="attr28">　　　萎える</label><label for="attr28">やる気の出る</label>
             <output  id="attr28_disp" class="num_output"></output><br>
             <input type="range" id="attr28" name="attr28" min="-10" max="10" value="-10" class="slider" oninput="attr28_disp.value = attr28.value">
         </div>
@@ -184,13 +221,19 @@
   </form>
 
     <div class="buttons">
-    <button id="next" type="submit" onclick="check()" class="next submit_button">次へ</button>
+    <button id="next" type="button" onclick="check()" class="next">次へ</button>
     <br>
-    <button id="save" type="submit" onclick="check2()"class="save submit_button">休憩</button>
+    <button id="save" type="button" onclick="check2()" class="save">休憩</button>
     </div>
   </div>
 
-  <div class="last_eval">
+  <div id="rest" class="rest">
+    <h1 class="title">紙の折り方によって与えられるユーザーエクスペリエンスを調べるための実験</h1>
+    <button id="continue" class="continue" type="button" onclick="resume()">実験を続く</button>
+  </div>
+
+
+  <div id="last_eval" class="last_eval">
     <h2>タスク２：気に入った色</h2>
     <p>気に入った色とその理由を５つ入力してください</p><br>
     <form>
@@ -198,7 +241,7 @@
     <div class="fav_color">
       <h3>色</h3>
       <label for="color1">色名</label>
-      <input type="text" id="color1" name="color1"><br>
+      <input type="text" id="color1" name="color1" class="fc"><br>
       <label for="color1r">理由</label>
       <textarea id="color1r" name="color1r" rows="3" cols="30"></textarea>
       <br>
@@ -207,7 +250,7 @@
     <div class="fav_color">
       <h3>色</h3>
       <label for="color2">色名</label>
-      <input type="text" id="color2" name="color2"><br>
+      <input type="text" id="color2" name="color2" class="fc"><br>
       <label for="color2r">理由</label>
       <textarea id="color2r" name="color2r" rows="3" cols="30"></textarea>
       <br>
@@ -216,7 +259,7 @@
     <div class="fav_color">
       <h3>色</h3>
       <label for="color3">色名</label>
-      <input type="text" id="color3" name="color3"><br>
+      <input type="text" id="color3" name="color3" class="fc"><br>
       <label for="color3r">理由</label>
       <textarea id="color3r" name="color3r" rows="3" cols="30"></textarea>
       <br>
@@ -225,7 +268,7 @@
     <div class="fav_color">
       <h3>色</h3>
       <label for="color4">色名</label>
-      <input type="text" id="color4" name="color4"><br>
+      <input type="text" id="color4" name="color4" class="fc"><br>
       <label for="color4r">理由</label>
       <textarea id="color4r" name="color4r" rows="3" cols="30"></textarea>
       <br>
@@ -234,27 +277,21 @@
     <div class="fav_color">
       <h3>色</h3>
       <label for="color5">色名</label>
-      <input type="text" id="color5" name="color5"><br>
+      <input type="text" id="color5" name="color5" class="fc"><br>
       <label for="color5r">理由</label>
       <textarea id="color5r" name="color5r" rows="3" cols="30"></textarea>
       <br>
     </div>
   </div>
-  <button type="submit">提出</button>
+  <button type="button" onclick="check3()">提出</button>
 </form>
 </div>
 
-<p id="thank"></p>
-
-<div style="display:none">
-    <p id="data"></p>
-    <p id="finished_num"></p>
-    <p id="cm_order"></p>
+<div class="thank" id="thank">
+  <h3>実験に参加してくださり、<br>ありがとうございました。<br> お疲れ様でした。</h3>
 </div>
 
-  <script>
-
-  </script>
+  <script src="paper_eval.js"></script>
 
   <script async defer src="https://apis.google.com/js/api.js" onload="this.onload=function(){};handleClientLoad()"
       onreadystatechange="if (this.readyState === 'complete') this.onload()"></script>
