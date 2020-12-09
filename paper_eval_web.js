@@ -69,6 +69,10 @@ ss_id.addEventListener("keydown", function(event){
               });
         }
 
+function reloadPage(){
+  location.reload(true);
+}
+
 function start() {
   header.style.display = 'none';
   guide.style.display = 'none';
