@@ -47,9 +47,36 @@ div.box{
   text-align: justify;
 }
 
-span.online_guide,
-output{
+span.online_guide{
   display:none;
+}
+
+output{
+  color: #9E413F;
+}
+
+div.outputs{
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 15.7rem;
+  line-height: 1.95rem;
+}
+
+div.outputs.first{
+  left: 3%;
+}
+
+div.outputs.second{
+  left: 27%;
+}
+
+div.outputs.third{
+  left: 51%;
+}
+
+div.outputs.fourth{
+  left: 76%;
 }
 
 div.all_eval_top p{
@@ -346,5 +373,31 @@ img.step4{
 
   img.step3{
     background-image: url('image/step3_online.png');
+  }
+
+  div.outputs{
+    left: 3%;
+    font-size: 1.2rem;
+    line-height: calc(4.7vw + 1.1rem);
+  }
+
+  div.outputs.first{
+    left: unset;
+    top: calc(55rem - 85vw);
+  }
+
+  div.outputs.second{
+    left: unset;
+    top: calc(70rem - 20vw);
+  }
+
+  div.outputs.third{
+    left: unset;
+    top: calc(85rem + 45vw);
+  }
+
+  div.outputs.fourth{
+    left: unset;
+    top: calc(100rem + 110vw);
   }
 }
