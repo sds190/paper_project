@@ -291,7 +291,7 @@ function close_file(){
   }
 
     // 3 VALUE INI MUSTI DIUBAH SESUAI INSTRUKSI
-    var CLIENT_ID = "514380287820-vcdcub63jhtma7uis4s0ua4ifpfnnglm.apps.googleusercontent.com";
+    var CLIENT_ID = "514380287820-tbhleigkv9mandjaqgrm3i5065e6g4ks.apps.googleusercontent.com";
     var API_KEY = "AIzaSyD1pa1gCIkPbBFSl8FPalMC0C3GSv5ks-k";
     var spreadsheetId = ss_id;
 
