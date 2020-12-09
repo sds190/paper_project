@@ -37,6 +37,14 @@ ss_id.addEventListener("keydown", function(event){
   }
 })
 
+var color5r = document.getElementById("color5r");
+color5r.addEventListener("keydown", function(event){
+  if(event.keyCode === 13){
+    event.preventDefault();
+    check3();
+  }
+})
+
   function check_id(){
     var ss_id = document.getElementById("ss_id").value;
     if (ss_id == ""){
