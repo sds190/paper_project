@@ -102,7 +102,6 @@ function start() {
 function focus_next_slider(e){
   var x = document.activeElement.id;
   var index = parseInt(x.slice(-2));
-  console.log(index)
   const sliders = document.querySelectorAll('.slider');
   try{
     if (e.keyCode === 13){
@@ -118,10 +117,8 @@ function focus_next_color(e){
   var x = document.activeElement.id;
   var index = parseInt(x.charAt(x.length-2));
   const next_index = index+1
-  console.log(next_index);
   const next_id = 'color'+next_index
   const next_color_name = document.getElementById(next_id);
-  console.log(next_color_name)
   try{
     if (e.keyCode === 13){
         event.preventDefault();
@@ -132,13 +129,9 @@ function focus_next_color(e){
 
 function focus_reason(e){
   var x = document.activeElement.id;
-  console.log(x)
   var index = parseInt(x.charAt(x.length-1));
-  console.log(index)
   const next_id = 'color'+index+'r';
   const reason = document.getElementById(next_id);
-  console.log(next_id)
-  console.log(reason)
   try{
     if (e.keyCode === 13){
         event.preventDefault();
@@ -271,7 +264,6 @@ function save_last_eval() {
         data_array.push(color_name[x].value);
         data_array.push(color_reason[x].value);
         }
-    console.log(data_array)
     var body = {
               values: [
                   data_array
