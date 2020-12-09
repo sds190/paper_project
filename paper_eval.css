@@ -250,7 +250,7 @@ img{
 }
 
 img.step1{
-  background-image: url();
+  background-image: url('image/step1.png');
 }
 
 img.step2{
@@ -263,7 +263,7 @@ img.step3{
 }
 
 img.step4{
-  background-image: url();
+  background-image: url('image/step4.png');
 
 }
 
@@ -378,7 +378,7 @@ img.step4{
   div.outputs{
     left: 3%;
     font-size: 1.2rem;
-    line-height: calc(4.7vw + 1.1rem);
+    line-height: calc(4.7vw + 1.2rem);
   }
 
   div.outputs.first{

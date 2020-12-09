@@ -25,6 +25,7 @@ const next = document.getElementById("next");
 const save = document.getElementById("save");
 const rest = document.getElementById("rest");
 const cont = document.getElementById("continue");
+const all_output = document.body.querySelectorAll("output");
 const last_eval = document.getElementById("last_eval");
 const thank = document.getElementById("thank");
 var i = 1;
@@ -191,6 +192,7 @@ function focus_reason(e){
           envelope_number.innerHTML = i;
           eval.reset();
           eval.style.display = "flex";
+          all_output.innerHTML = "未";
           document.body.scrollTop = 0; // For Safari
           document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
           openFullscreen();
