@@ -25,9 +25,11 @@ const next = document.getElementById("next");
 const save = document.getElementById("save");
 const rest = document.getElementById("rest");
 const cont = document.getElementById("continue");
-const all_output = document.body.querySelectorAll("output");
 const last_eval = document.getElementById("last_eval");
 const thank = document.getElementById("thank");
+const all_output = document.body.querySelectorAll("output");
+const attr01 = document.getElementById("attr01");
+const color_eval = document.getElementById("color_eval");
 var i = 1;
 
 var ss_id = document.getElementById("ss_id");
@@ -38,11 +40,11 @@ ss_id.addEventListener("keydown", function(event){
   }
 })
 
-var color5r = document.getElementById("color5r");
-color5r.addEventListener("keydown", function(event){
+var colorr = document.getElementById("colorr");
+colorr.addEventListener("keydown", function(event){
   if(event.keyCode === 13){
     event.preventDefault();
-    check3();
+    check();
   }
 })
 
@@ -71,16 +73,16 @@ color5r.addEventListener("keydown", function(event){
           if(i<31){
             guide.style.display = "block";
           } else {
-            ans_last_eval();
+            thank.style.display = "block";
           }}, function (error) {
                 alert("正しいIDを入力してください");
                 reloadPage();
               });
         }
 
-function reloadPage(){
-  location.reload(true);
-}
+        function reloadPage(){
+          location.reload(true);
+        }
 
 function start() {
   header.style.display = 'none';
@@ -94,8 +96,9 @@ function start() {
     openFullscreen();
     setTimeout(function(){
       all_eval.style.display = 'block';
+      attr01.focus();
     },500)} else{
-      ans_last_eval();
+      thank.style.display = "block";
     }
   }
 
@@ -104,7 +107,7 @@ function start() {
       guide.style.display = "block";
       cont.onclick = next_envelope()
     } else {
-      ans_last_eval();
+      thank.style.display = "block";
     }
   }
 
@@ -122,29 +125,22 @@ function focus_next_slider(e){
     } catch(error){}
 }
 
-function focus_next_color(e){
-  var x = document.activeElement.id;
-  var index = parseInt(x.charAt(x.length-2));
-  const next_index = index+1
-  const next_id = 'color'+next_index
-  const next_color_name = document.getElementById(next_id);
+function focus_color(e){
+  var color = document.getElementById('color')
   try{
     if (e.keyCode === 13){
         event.preventDefault();
-        next_color_name.focus();
+        color.focus();
       }
     } catch(error){}
 }
 
 function focus_reason(e){
-  var x = document.activeElement.id;
-  var index = parseInt(x.charAt(x.length-1));
-  const next_id = 'color'+index+'r';
-  const reason = document.getElementById(next_id);
+  const colorr = document.getElementById('colorr');
   try{
     if (e.keyCode === 13){
         event.preventDefault();
-        reason.focus();
+        colorr.focus();
       }
     } catch(error){}
 }
@@ -152,36 +148,56 @@ function focus_reason(e){
 
   function check(){
       var output = document.getElementsByTagName("output");
+      var color_name = document.getElementById("color");
+      var color_reason = document.getElementById("colorr");
       var y=0;
+      var z=0;
+      console.log(output)
       for (x = 0; x<output.length; x++){
-        if (output[x].value==''){
+        if (output[x].value=='未'){
           y++;
         }}
-      if (y==0){
+      if (color_name.value == '' || color_reason.value ==''){
+          z++;
+        }
+      if (y==0 && z==0){
         save_file();
         i++;
         next_envelope();
       }  else {
-          alert(y+'個の答えていない項目があります');
+        if(y>0){
+          alert('タスク１に'+y+'個の答えていない項目があります');
         }
-    }
+        if (z>0){
+          alert("タスク２を完成させてください");
+        }
+    }}
 
   function check2(){
         var output = document.getElementsByTagName("output");
+        var color_name = document.getElementById("color");
+        var color_reason = document.getElementById("colorr");
         var y=0;
+        var z=0;
         for (x = 0; x<output.length; x++){
-          if (output[x].value==''){
+          if (output[x].value=='未'){
             y++;
           }}
-        if (y==0){
+          if (color_name.value == '' || color_reason.value ==''){
+              z++;
+            }
+        if (y==0 && z==0){
           save_file();
           i++;
           hide_screen();
           rest.style.display="inline-block";
         }  else {
-            alert(y+'個の答えていない項目があります');
+          if(y>0){
+            alert('タスク１に'+y+'個の答えていない項目があります');
           }
-      }
+          if (z>0){
+            alert("タスク２を完成させてください");
+          }}}
 
   function next_envelope() {
       rest.style.display = "none";
@@ -191,23 +207,29 @@ function focus_reason(e){
           document.body.scrollTop = 0;
           envelope_number.innerHTML = i;
           eval.reset();
+          color_eval.reset();
           eval.style.display = "flex";
           all_output.innerHTML = "未";
           document.body.scrollTop = 0; // For Safari
           document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+          attr01.focus();
           openFullscreen();
         },500)
       } else {
-        ans_last_eval();
+        thank.style.display="block";
       }
     }
 
   function save_file() {
       var output = document.getElementsByTagName("output");
+      var color_name = document.getElementById("color");
+      var color_reason = document.getElementById("colorr");
       var data_array = [i];
       for (x = 0; x<output.length; x++){
           data_array.push(output[x].value)
         }
+      data_array.push(color_name.value);
+      data_array.push(color_reason.value);
       var body = {
             values: [
                 data_array
@@ -240,59 +262,9 @@ function focus_reason(e){
       }
 }
 
-function ans_last_eval(){
-    openFullscreen()
-    top_page.style.display="none";
-    all_eval.style.display="none";
-    rest.style.display="none";
-    last_eval.style.display="block";
-}
-
-function check3(){
-    var color_name = document.getElementsByClassName("fc");
-    var color_reason = document.getElementsByTagName("textarea");
-    var y = 0;
-    for (x = 0; x<color_name.length; x++){
-      if (color_name[x].value=='' || color_reason[x].value==''){
-        y++;
-      }}
-    if (y==0){
-      save_last_eval();
-      close_file();
-    }  else {
-        alert(y+'つの完成していない答えがあります');
-      }
-}
-
-function save_last_eval() {
-    var color_name = document.getElementsByClassName("fc");
-    var color_reason = document.getElementsByTagName("textarea");
-    var id = document.getElementById("ss_id");
-    var spreadsheetId = id.value;
-    var data_array = [];
-    for (x = 0; x<color_reason.length; x++){
-        data_array.push(color_name[x].value);
-        data_array.push(color_reason[x].value);
-        }
-    var body = {
-              values: [
-                  data_array
-              ]
-          };
-    gapi.client.sheets.spreadsheets.values.append({
-          spreadsheetId: spreadsheetId,
-          range: last_sheet_name, // INI NAMA SHEET YG BIASA DI BAWAH (DEFAULTNYA Sheet1)
-          valueInputOption: 'RAW', // INI IKUTIN AJA
-          resource: body
-      }).then((response) => {
-          var result = response.result;
-          console.log(`${result.updates.updatedCells} cells appended.`)
-      });
-  }
-
 
 function close_file(){
-    last_eval.style.display="none";
+    all_eval.style.display="none";
     thank.style.display="block";
   }
 

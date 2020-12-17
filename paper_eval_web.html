@@ -43,7 +43,7 @@
       <h3>ステップ３</h3>
       <p>パンフレットの折り方を評価していただきます。<br>
       <b>封筒番号と評価画面の数字が一致することを確認してください。</b></br>
-      評価が終わったら、次のパンフレットを評価する場合、「次へ」のボタンを押してください。<br>
+      タスク１とタスク２が終わったら、次のパンフレットを評価する場合、「次へ」のボタンを押してください。<br>
       休憩を取る場合は「休憩」のボタンを押してください。</p>
     </div>
     <div class="box">
@@ -65,7 +65,7 @@
       <b>封筒番号と評価画面の数字が一致することを確認してください。</b><br>
       パンフレットの内容ではなく、折り方を評価してください。<br>
       21段階評価で評価してください。<br>
-      評価が-10でも、必ず1回スライダーをクリックまたは動かして、数値が左側に表示されるように動かしてください。
+      評価が-10でも、必ず1回ボタンをクリックして、数値が右側に表示されるように動かしてください。
     </p>
   </div>
     <form id="eval" class="eval">
@@ -229,11 +229,25 @@
           </div>
           <div class="question">
             <label for="attr28">　　　萎える</label><label for="attr28">やる気の出る</label>
-            <br><input type="range" id="attr28" name="attr28" min="-10" max="10" value="-10" class="slider" onkeydown="focus_next_slider(event)" oninput="attr28_disp.value = attr28.value">
+            <br><input type="range" id="attr28" name="attr28" min="-10" max="10" value="-10" class="slider" onkeydown="focus_color(event)" oninput="attr28_disp.value = attr28.value">
         </div>
       </div>
-
   </form>
+
+  <div class="last_eval" id="last_eval">
+      <h2>タスク２：気に入った色</h2>
+      <p>気に入った色とその理由を入力してください</p><br>
+      <div class="fav_color">
+        <h3>色</h3>
+        <form id="color_eval">
+        <label for="color">色名</label>
+        <input type="text" id="color" name="color" class="fc" onkeydown="focus_reason(event)"><br>
+        <label for="colorr">理由</label>
+        <textarea id="colorr" name="colorr" rows="3" cols="30"></textarea>
+        <br>
+      </form>
+      </div>
+</div>
 
     <div class="buttons">
     <button id="next" type="button" onclick="check()" class="next">次へ</button>
@@ -246,61 +260,6 @@
     <h1 class="title">紙の折り方によって与えられるユーザーエクスペリエンスを調べるための実験</h1>
     <button id="continue" class="continue" type="button" onclick="resume()">実験を続く</button>
   </div>
-
-
-  <div id="last_eval" class="last_eval">
-    <h2>タスク２：気に入った色</h2>
-    <p>気に入った色とその理由を５つ入力してください</p><br>
-    <form>
-    <div class="colors">
-    <div class="fav_color">
-      <h3>色</h3>
-      <label for="color1">色名</label>
-      <input type="text" id="color1" name="color1" class="fc" onkeydown="focus_reason(event)"><br>
-      <label for="color1r">理由</label>
-      <textarea id="color1r" name="color1r" rows="3" cols="30" onkeydown="focus_next_color(event)"></textarea>
-      <br>
-    </div>
-
-    <div class="fav_color">
-      <h3>色</h3>
-      <label for="color2">色名</label>
-      <input type="text" id="color2" name="color2" class="fc" onkeydown="focus_reason(event)"><br>
-      <label for="color2r">理由</label>
-      <textarea id="color2r" name="color2r" rows="3" cols="30" onkeydown="focus_next_color(event)"></textarea>
-      <br>
-    </div>
-
-    <div class="fav_color">
-      <h3>色</h3>
-      <label for="color3">色名</label>
-      <input type="text" id="color3" name="color3" class="fc" onkeydown="focus_reason(event)"><br>
-      <label for="color3r">理由</label>
-      <textarea id="color3r" name="color3r" rows="3" cols="30" onkeydown="focus_next_color(event)"></textarea>
-      <br>
-    </div>
-
-    <div class="fav_color">
-      <h3>色</h3>
-      <label for="color4">色名</label>
-      <input type="text" id="color4" name="color4" class="fc" onkeydown="focus_reason(event)"><br>
-      <label for="color4r">理由</label>
-      <textarea id="color4r" name="color4r" rows="3" cols="30" onkeydown="focus_next_color(event)"></textarea>
-      <br>
-    </div>
-
-    <div class="fav_color">
-      <h3>色</h3>
-      <label for="color5">色名</label>
-      <input type="text" id="color5" name="color5" class="fc" onkeydown="focus_reason(event)"><br>
-      <label for="color5r">理由</label>
-      <textarea id="color5r" name="color5r" rows="3" cols="30"></textarea>
-      <br>
-    </div>
-  </div>
-  <button type="button" onclick="check3()">提出</button>
-</form>
-</div>
 
 <div class="thank" id="thank">
   <h3>実験に参加してくださり、<br>ありがとうございました。<br> お疲れ様でした。</h3>
