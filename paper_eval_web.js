@@ -265,6 +265,7 @@ function focus_reason(e){
 
 function close_file(){
     all_eval.style.display="none";
+    last_eval.style.display="none";
     thank.style.display="block";
   }
 
