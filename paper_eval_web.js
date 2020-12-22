@@ -30,7 +30,7 @@ const thank = document.getElementById("thank");
 const all_output = document.body.querySelectorAll("output");
 const attr01 = document.getElementById("attr01");
 const color_eval = document.getElementById("color_eval");
-var i = 1;
+var i = 0;
 
 var ss_id = document.getElementById("ss_id");
 ss_id.addEventListener("keydown", function(event){
@@ -68,7 +68,7 @@ colorr.addEventListener("keydown", function(event){
           var numRows = result.values ? result.values.length : 0;
           console.log(`${numRows} rows retrieved.`);
           // DATA ARRAY NYA ADA DI result.values MISAL MAU DIBACA
-          i = numRows //real need change to i
+          i = numRows - 1//real need change to i
           top_page.style.display = "none";
           if(i<31){
             guide.style.display = "block";
